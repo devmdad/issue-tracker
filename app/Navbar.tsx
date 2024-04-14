@@ -12,11 +12,11 @@ const Navbar = () => {
     { label: "Issues", href: "/issues" },
   ];
   return (
-    <nav className="flex p-5 gap-x-5 border-b items-center mb-5">
+    <nav className="flex p-5 space-x-5 border-b items-center mb-5">
       <Link href="/">
         <AiFillBug size={30} />
       </Link>
-      <ul className="flex gap-x-5">
+      <ul className="flex space-x-5">
         {links.map((link) => (
           <li key={link.href}>
             <Link
