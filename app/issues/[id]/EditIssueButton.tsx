@@ -4,7 +4,7 @@ import { Box, Button } from "@radix-ui/themes";
 import Link from "next/link";
 import React from "react";
 
-const EditIssueButton = ({ issueId }: { issueId: string }) => {
+const EditIssueButton = ({ issueId }: { issueId: number }) => {
   return (
     <Box>
       <Button>
