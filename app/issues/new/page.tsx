@@ -1,8 +1,8 @@
 "use client";
 
 import { Box, Button, Callout, Text, TextField } from "@radix-ui/themes";
-import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
+import dynamic from "next/dynamic";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -22,6 +22,10 @@ const NewIssue = async () => {
   } = useForm<IssueForm>({ resolver: zodResolver(createIssueSchema) });
   const router = useRouter();
   const [error, setError] = useState<any>("");
+
+  const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+    ssr: false,
+  });
 
   return (
     <Box className="max-w-xl">
