@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import { Box, Button, Callout, Text, TextField } from "@radix-ui/themes";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { Controller, useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ import { z } from "zod";
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
-const NewIssue = () => {
+const NewIssue = async () => {
   const {
     register,
     control,
@@ -24,7 +24,7 @@ const NewIssue = () => {
   const [error, setError] = useState<any>("");
 
   return (
-    <div className="max-w-xl">
+    <Box className="max-w-xl">
       {error && (
         <Callout.Root color="red" className="mb-5">
           <Callout.Text>{error}</Callout.Text>
@@ -65,7 +65,7 @@ const NewIssue = () => {
 
         <Button>Submit New Issue</Button>
       </form>
-    </div>
+    </Box>
   );
 };
 
