@@ -33,6 +33,6 @@ export async function DELETE(
 
   if (!issue) return NextResponse.json("Record not found", { status: 404 });
 
-  prisma.issue.delete({ where: { id: issue.id } });
+  await prisma.issue.delete({ where: { id: issue.id } });
   return NextResponse.json({});
 }
