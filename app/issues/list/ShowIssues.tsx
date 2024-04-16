@@ -1,7 +1,7 @@
 import { Table } from "@radix-ui/themes";
 import Link from "@/app/components/Link";
 import React from "react";
-import { IssueStatusBadge } from "../components";
+import { IssueStatusBadge } from "../../components";
 import { Issue } from "@prisma/client";
 
 interface Props {
