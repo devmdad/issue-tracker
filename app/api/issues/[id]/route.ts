@@ -1,6 +1,5 @@
 import { IssueSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
-import delay from "delay";
 import { notFound } from "next/navigation";
 import { NextResponse } from "next/server";
 
@@ -34,7 +33,6 @@ export async function DELETE(
 
   if (!issue) return NextResponse.json("Record not found", { status: 404 });
 
-  await delay(2000);
   await prisma.issue.delete({ where: { id: issue.id } });
   return NextResponse.json({});
 }
