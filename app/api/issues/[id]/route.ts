@@ -43,3 +43,20 @@ export async function DELETE(
   await prisma.issue.delete({ where: { id: issue.id } });
   return NextResponse.json({});
 }
+
+// export async function AssigneeSelection(
+//   request: NextResponse,
+//   { params }: { params: { id: string } }
+// ) {
+
+//   const issue = await prisma.issue.findUnique({
+//     where: { id: parseInt(params.id) },
+//   });
+//   if (!issue) return NextResponse.json("No record found", { status: 404 });
+
+//   const body = await request.json();
+//   if(body.assignee)
+
+
+//   await prisma.issue.update({where: {id: issue.id}, data{}})
+// }
