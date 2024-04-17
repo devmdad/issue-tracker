@@ -27,9 +27,46 @@ const Navbar = () => {
   );
 };
 
+const NavLinks = () => {
+  const currentPath = usePathname();
+  const links = [
+    { label: "Dashboard", href: "/" },
+    { label: "Issues", href: "/issues/list" },
+  ];
+  return (
+    <Flex gap="3" align="center">
+      <Link href="/">
+        <AiFillBug size={30} />
+      </Link>
+      <ul className="flex space-x-5">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={classNames({
+                "nav-links": true,
+                "!text-zinc-900": link.href === currentPath,
+              })}
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </Flex>
+  );
+};
+
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
+  if (status === "loading") return null;
+  if (status === "unauthenticated")
+    return (
+      <Link href="/api/auth/signin" className="nav-links">
+        Login
+      </Link>
+    );
   return (
     <Box>
       {status === "authenticated" && (
@@ -54,41 +91,7 @@ const AuthStatus = () => {
           </DropdownMenu.Content>
         </DropdownMenu.Root>
       )}
-      {status === "unauthenticated" && (
-        <Link href="/api/auth/signin">Login</Link>
-      )}
     </Box>
-  );
-};
-
-const NavLinks = () => {
-  const currentPath = usePathname();
-  const links = [
-    { label: "Dashboard", href: "/" },
-    { label: "Issues", href: "/issues/list" },
-  ];
-  return (
-    <Flex gap="3" align="center">
-      <Link href="/">
-        <AiFillBug size={30} />
-      </Link>
-      <ul className="flex space-x-5">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className={classNames({
-                "text-zinc-900": link.href === currentPath,
-                "text-zinc-500": link.href !== currentPath,
-                "hover:text-zinc-800 transition-colors": true,
-              })}
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </Flex>
   );
 };
 
