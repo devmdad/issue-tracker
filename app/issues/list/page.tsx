@@ -11,17 +11,11 @@ const IssuesPage = async ({
 }: {
   searchParams: { status: Status; orderBy: keyof Issue };
 }) => {
-  const statuses = Object.values(Status);
-  const status = statuses.includes(searchParams.status)
-    ? searchParams.status
-    : undefined;
-  const issues = await prisma.issue.findMany({
-    where: { status: status },
-  });
+  
   return (
     <div>
       <IssueActions />
-      <ShowIssues issues={issues} searchParams={searchParams} />
+      <ShowIssues searchParams={searchParams} />
     </div>
   );
 };
