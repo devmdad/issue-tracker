@@ -4,14 +4,14 @@ import React from "react";
 import { IssueStatusBadge, Link } from "../../components";
 import IssueActions from "./IssueActions";
 import ShowIssues from "./ShowIssues";
-import { Status } from "@prisma/client";
+import { Issue, Status } from "@prisma/client";
 
 const IssuesPage = async ({
   searchParams,
 }: {
-  searchParams: { status: Status };
+  searchParams: { status: Status; orderBy: keyof Issue };
 }) => {
-  const statuses = Object.values(searchParams.status);
+  const statuses = Object.values(Status);
   const status = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined;
@@ -21,7 +21,7 @@ const IssuesPage = async ({
   return (
     <div>
       <IssueActions />
-      <ShowIssues issues={issues} />
+      <ShowIssues issues={issues} searchParams={searchParams} />
     </div>
   );
 };
