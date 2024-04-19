@@ -7,7 +7,6 @@ import IssueDetails from "./IssueDetails";
 import { getServerSession } from "next-auth";
 import authOptions from "@/app/auth/authOptions";
 import AssigneeSelect from "./AsigneeSelect";
-import { title } from "process";
 import { cache } from "react";
 
 interface Props {
