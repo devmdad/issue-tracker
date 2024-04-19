@@ -5,6 +5,7 @@ import { IssueStatusBadge, Link } from "../../components";
 import IssueActions from "./IssueActions";
 import ShowIssues, { IssueQuery } from "./ShowIssues";
 import { Issue, Status } from "@prisma/client";
+import { Metadata } from "next";
 
 interface Props {
   searchParams: IssueQuery;
@@ -22,3 +23,8 @@ const IssuesPage = async ({ searchParams }: Props) => {
 export const dynamic = "force-dynamic";
 
 export default IssuesPage;
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Issues List",
+  description: "See summary of all Issues",
+};
