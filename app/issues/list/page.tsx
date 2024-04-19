@@ -1,22 +1,21 @@
 import prisma from "@/prisma/client";
-import { Table } from "@radix-ui/themes";
+import { Box, Flex, Table } from "@radix-ui/themes";
 import React from "react";
 import { IssueStatusBadge, Link } from "../../components";
 import IssueActions from "./IssueActions";
-import ShowIssues from "./ShowIssues";
+import ShowIssues, { IssueQuery } from "./ShowIssues";
 import { Issue, Status } from "@prisma/client";
 
-const IssuesPage = async ({
-  searchParams,
-}: {
-  searchParams: { status: Status; orderBy: keyof Issue, page: string };
-}) => {
-  
+interface Props {
+  searchParams: IssueQuery;
+}
+
+const IssuesPage = async ({ searchParams }: Props) => {
   return (
-    <div>
+    <Flex direction="column" gap="3">
       <IssueActions />
       <ShowIssues searchParams={searchParams} />
-    </div>
+    </Flex>
   );
 };
 

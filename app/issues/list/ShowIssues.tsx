@@ -8,8 +8,14 @@ import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import prisma from "@/prisma/client";
 import Pagination from "@/app/components/Pagination";
 
+export interface IssueQuery {
+  status: Status;
+  orderBy: keyof Issue;
+  page: string;
+}
+
 interface Props {
-  searchParams: { status: Status; orderBy: keyof Issue; page: string };
+  searchParams: IssueQuery;
 }
 
 const ShowIssues = async ({ searchParams }: Props) => {
@@ -42,7 +48,7 @@ const ShowIssues = async ({ searchParams }: Props) => {
 
   return (
     <Box>
-      <Table.Root variant="surface" className="mt-5">
+      <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
             {columns.map((column) => (
